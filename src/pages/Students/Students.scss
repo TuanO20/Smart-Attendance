@@ -1,0 +1,51 @@
+h3 {
+    color: red;
+    font-size: 30px;
+    text-align: center;
+    margin: 50px 0;
+}
+
+.studentList {
+    //padding: 60px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+    
+    table {
+        width: 60vw;
+        font-size: 17px;
+        margin: auto;
+        border: 1px solid black;
+        border-collapse: collapse;
+    
+        th,td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            padding: 0 10px;
+        }
+    
+        thead {
+            background-color: green;
+            th {
+                color: yellow;
+                font-weight: 400;
+            }
+        }
+    
+        tbody {
+            .icon {
+                div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                i {
+                    cursor: pointer;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
