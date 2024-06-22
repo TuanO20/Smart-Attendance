@@ -38,7 +38,7 @@ function UpdateStudent({ student }) {
     const handleUpdate = async () => {
         // Get data from input using useRef()
         const newStudent = {
-            ID: idRef.current.value,
+            //ID: idRef.current.value,
             FullName: fullNameRef.current.value,
             Faculty: facultyRef.current.value,
             TypeOfTraining: typeOfTrainingRef.current.value,
@@ -56,6 +56,8 @@ function UpdateStudent({ student }) {
 
             //updateStudent();
         }
+        else alert(`Year has to be between 2006 and ${yearNow}`);
+
 
         handleClose();
     }
@@ -65,23 +67,23 @@ function UpdateStudent({ student }) {
         <>
             <i class="fa-solid fa-pencil" onClick={handleShow}></i>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} style={{color: "green"}}>
                 <Modal.Header closeButton>
                     <Modal.Title>
                         <i class="fa-solid fa-graduation-cap" style={{ marginRight: "20px" }}></i>
-                        <span>Add new student</span>
+                        <span>Edit student</span>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>ID</Form.Label>
-                            <Form.Control type="text" placeholder="21521234" required autoFocus ref={idRef} />
+                            <Form.Control type="text" placeholder="21521234" disabled ref={idRef} />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
                             <Form.Label>Full name</Form.Label>
-                            <Form.Control type='text' placeholder='Nguyen Van A' required ref={fullNameRef} />
+                            <Form.Control type='text' placeholder='Nguyen Van A' autoFocus required ref={fullNameRef} />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
