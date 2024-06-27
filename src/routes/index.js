@@ -1,13 +1,16 @@
 import Welcome from "../components/Welcome";
 import DefaultDashBoard from "../layout/DefaultDashBoard";
 import DefaultHome from "../layout/DefaultHome";
-import Attendance from "../pages/Attendance";
+import Attendances from "../pages/Attendances";
 import Lessons from "../pages/Lessons";
 import Login from "../pages/Login";
 import Recognition from "../pages/Recognition";
 import Statistics from "../pages/Statistics";
 import Students from "../pages/Students";
 import Subjects from "../pages/Subjects";
+import Teachers from "../pages/Teachers";
+import Classes from "../pages/Classes";
+
 
 
 export const routes = [
@@ -34,12 +37,20 @@ export const routes = [
                 element: <Students></Students>
             },
             {
+                path: 'teachers',
+                element: <Teachers></Teachers>
+            },
+            {
                 path: 'subjects',
                 element: <Subjects></Subjects>
             },
             {
-                path: 'attendance',
-                element: <Attendance></Attendance>
+                path: 'classes',
+                element: <Classes></Classes>
+            },
+            {
+                path: 'attendances',
+                element: <Attendances></Attendances>
             },
             {
                 path: 'lessons',

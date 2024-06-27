@@ -70,23 +70,23 @@ $hover-color: #497886;
 
     }
 
-    &__social {
-        margin-top: 100px;
-        text-align: center;
-        h5 {
-            margin-left: -10px;
-            margin-bottom: 10px;
-        }
-        a {
-            color: grey;
-            i {
-                margin-right: 20px;
-                cursor: pointer;
+    // &__social {
+    //     margin-top: 100px;
+    //     text-align: center;
+    //     h5 {
+    //         margin-left: -10px;
+    //         margin-bottom: 10px;
+    //     }
+    //     a {
+    //         color: grey;
+    //         i {
+    //             margin-right: 20px;
+    //             cursor: pointer;
     
-                &:hover {
-                    color: #0f8ff2;
-                }
-            }
-        }
-    }
+    //             &:hover {
+    //                 color: #0f8ff2;
+    //             }
+    //         }
+    //     }
+    // }
 }

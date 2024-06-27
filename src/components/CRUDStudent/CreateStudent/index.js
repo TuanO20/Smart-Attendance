@@ -4,13 +4,14 @@ import { setDoc, doc } from 'firebase/firestore';
 import { db } from '../../../firebase';
 import Webcam from 'react-webcam';
 import './CreateStudent.scss';
+import { clear } from '@testing-library/user-event/dist/clear';
 
 const CreateStudent = () => {
   const [show, setShow] = useState(false);
-  const [capturing, setCapturing] = useState(false);
-  const [recordedChunks, setRecordedChunks] = useState([]);
-  const webcamRef = useRef(null);
-  const mediaRecorderRef = useRef(null);
+  const [imagesAll, setImagesAll] = useState({});
+  // const [capturing, setCapturing] = useState(false);
+  // const [recordedChunks, setRecordedChunks] = useState([]);
+  // const mediaRecorderRef = useRef(null);
 
   const idRef = useRef();
   const fullNameRef = useRef();
@@ -18,55 +19,56 @@ const CreateStudent = () => {
   const typeOfTrainingRef = useRef();
   const classRef = useRef();
   const yearRef = useRef();
+  const webcamRef = useRef(null);
 
-  const videoConstraints = {
-    width: 420,
-    height: 420,
-    facingMode: "user",
-  };
+  // const videoConstraints = {
+  //   width: 420,
+  //   height: 420,
+  //   facingMode: "user",
+  // };
 
-  const handleStartCaptureClick = useCallback(() => {
-    setCapturing(true);
-    mediaRecorderRef.current = new MediaRecorder(webcamRef.current.stream, {
-      mimeType: "video/webm"
-    });
-    mediaRecorderRef.current.addEventListener(
-      "dataavailable",
-      handleDataAvailable
-    );
-    mediaRecorderRef.current.start();
-  }, [webcamRef, setCapturing, mediaRecorderRef]);
+  // const handleStartCaptureClick = useCallback(() => {
+  //   setCapturing(true);
+  //   mediaRecorderRef.current = new MediaRecorder(webcamRef.current.stream, {
+  //     mimeType: "video/webm"
+  //   });
+  //   mediaRecorderRef.current.addEventListener(
+  //     "dataavailable",
+  //     handleDataAvailable
+  //   );
+  //   mediaRecorderRef.current.start();
+  // }, [webcamRef, setCapturing, mediaRecorderRef]);
 
-  const handleDataAvailable = useCallback(
-    ({ data }) => {
-      if (data.size > 0) {
-        setRecordedChunks((prev) => prev.concat(data));
-      }
-    },
-    [setRecordedChunks]
-  );
+  // const handleDataAvailable = useCallback(
+  //   ({ data }) => {
+  //     if (data.size > 0) {
+  //       setRecordedChunks((prev) => prev.concat(data));
+  //     }
+  //   },
+  //   [setRecordedChunks]
+  // );
 
-  const handleStopCaptureClick = useCallback(() => {
-    mediaRecorderRef.current.stop();
-    setCapturing(false);
-  }, [mediaRecorderRef, webcamRef, setCapturing]);
+  // const handleStopCaptureClick = useCallback(() => {
+  //   mediaRecorderRef.current.stop();
+  //   setCapturing(false);
+  // }, [mediaRecorderRef, webcamRef, setCapturing]);
 
-  const handleDownload = useCallback(() => {
-    if (recordedChunks.length) {
-      const blob = new Blob(recordedChunks, {
-        type: "video/mp4"
-      });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      document.body.appendChild(a);
-      a.style = "display: none";
-      a.href = url;
-      a.download = "react-webcam-stream-capture.mp4";
-      a.click();
-      window.URL.revokeObjectURL(url);
-      setRecordedChunks([]);
-    }
-  }, [recordedChunks]);
+  // const handleDownload = useCallback(() => {
+  //   if (recordedChunks.length) {
+  //     const blob = new Blob(recordedChunks, {
+  //       type: "video/mp4"
+  //     });
+  //     const url = URL.createObjectURL(blob);
+  //     const a = document.createElement("a");
+  //     document.body.appendChild(a);
+  //     a.style = "display: none";
+  //     a.href = url;
+  //     a.download = "react-webcam-stream-capture.mp4";
+  //     a.click();
+  //     window.URL.revokeObjectURL(url);
+  //     setRecordedChunks([]);
+  //   }
+  // }, [recordedChunks]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -99,11 +101,47 @@ const CreateStudent = () => {
   };
 
   // Automatically download after stopping capture
-  React.useEffect(() => {
-    if (!capturing && recordedChunks.length) {
-      handleDownload();
-    }
-  }, [capturing, recordedChunks, handleDownload]);
+  // React.useEffect(() => {
+  //   if (!capturing && recordedChunks.length) {
+  //     handleDownload();
+  //   }
+  // }, [capturing, recordedChunks, handleDownload]);
+
+  const handleCaptureImage = (e) => {
+    var images = [];
+
+    const autoCapture = setInterval(() => {
+        images.push(webcamRef.current.getScreenshot());
+        //console.log(images);
+
+        if (images.length === 5) {
+            clearInterval(autoCapture);
+            console.log(images);
+            
+            if (e.target.innerHTML === 'Left') {
+                setImagesAll({ ...imagesAll, Left: images });
+            }
+            else if (e.target.innerHTML === 'Right') {
+                setImagesAll({ ...imagesAll, Right: images });
+            }
+            else if (e.target.innerHTML === 'Center') {
+              setImagesAll({ ...imagesAll, Center: images });
+            }
+            else if (e.target.innerHTML === 'Top') {
+              setImagesAll({ ...imagesAll, Top: images });
+            }
+            else if (e.target.innerHTML === 'Bottom') {
+              setImagesAll({ ...imagesAll, Bottom: images });
+            }
+        }
+        e.target.disabled = true;
+    }, 500);
+}
+
+  const handleOK = () => {
+    console.log(imagesAll);
+  }
+
 
   return (
     <>
@@ -163,12 +201,20 @@ const CreateStudent = () => {
 
             <Form.Group className="mb-3">
               <Form.Label>Image</Form.Label><br></br>
-              <Webcam mirrored={true} videoConstraints={videoConstraints} ref={webcamRef} style={{ width: "100%" }}></Webcam>
+              {/* <Webcam mirrored={true} videoConstraints={videoConstraints} ref={webcamRef} style={{ width: "100%" }}></Webcam>
               {capturing ? (
                 <Button className='btn btn-primary' onClick={handleStopCaptureClick} style={{ margin: "0" }}>Stop Capture</Button>
               ) : (
                 <Button className='btn btn-primary' onClick={handleStartCaptureClick} style={{ margin: "0" }}>Start Capture</Button>
-              )}
+              )} */}
+
+              <Webcam mirrored={true} ref={webcamRef} style={{ width: "100%" }}></Webcam>
+              <Button className='btn btn-primary' onClick={handleCaptureImage}>Left</Button>
+              <Button className='btn btn-warning' onClick={handleCaptureImage}>Right</Button>
+              <Button className='btn btn-secondary' onClick={handleCaptureImage}>Center</Button>
+              <Button className='btn btn-danger' onClick={handleCaptureImage}>Top</Button>
+              <Button className='btn btn-info' onClick={handleCaptureImage}>Bottom</Button>
+              <Button className='btn btn-success' onClick={handleOK}>Send</Button>
             </Form.Group>
           </Form>
         </Modal.Body>

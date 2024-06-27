@@ -20,10 +20,24 @@ function Sidebar() {
                             </li>
                         </NavLink>
 
+                        <NavLink to="/dashboard/teachers">
+                            <li>
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                <span>Teachers</span>
+                            </li>
+                        </NavLink>
+
                         <NavLink to="/dashboard/subjects">
                             <li>
                                 <i class="fa-solid fa-book"></i>
                                 <span>Subjects</span>
+                            </li>
+                        </NavLink>
+
+                        <NavLink to="/dashboard/classes">
+                            <li>
+                            <i class="fa-solid fa-school"></i>
+                                <span>Classes</span>
                             </li>
                         </NavLink>
 
@@ -34,35 +48,35 @@ function Sidebar() {
                             </li>
                         </NavLink>
 
-                        <NavLink to="/dashboard/attendance">
+                        <NavLink to="/dashboard/attendances">
                             <li>
                                 <i class="fa-solid fa-clipboard-user"></i>
-                                <span>Attendance</span>
+                                <span>Attendances</span>
                             </li>
                         </NavLink>
 
                         <NavLink to="/dashboard/recognition">
                             <li>
-                                <i class="fa-solid fa-clipboard-user"></i>
+                            <i class="fa-solid fa-magnifying-glass"></i>
                                 <span>Recognition</span>
                             </li>
                         </NavLink>
 
                         <NavLink to="/dashboard/statistics">
                             <li>
-                                <i class="fa-solid fa-clipboard-user"></i>
+                            <i class="fa-solid fa-chart-column"></i>
                                 <span>Statistics</span>
                             </li>
                         </NavLink>
                     </ul>
                 </div>
 
-                <div className='sidebar__social'>
+                {/* <div className='sidebar__social'>
                     <h5>Follow us</h5>
                     <a href="https://www.facebook.com/Google"><i class="fa-brands fa-facebook fa-lg"></i></a>
                     <a href='https://www.instagram.com/google/'><i class="fa-brands fa-square-instagram fa-lg"></i></a>
                     <a href='https://twitter.com/Google'><i class="fa-brands fa-square-x-twitter fa-lg"></i></a>
-                </div>
+                </div> */}
             </div>
         </>
     );
