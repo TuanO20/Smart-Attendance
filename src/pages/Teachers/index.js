@@ -5,13 +5,13 @@ import { useEffect, useRef, useState } from 'react';
 import CreateTeacher from '../../components/CRUDTeachers/CreateTeacher';
 import DeleteTeacher from '../../components/CRUDTeachers/DeleteTeacher';
 import UpdateTeacher from '../../components/CRUDTeachers/UpdateTeacher';
-
+import { exportToExcel } from '../../utils/excel';
 
 function Teachers() {
     const [teacherList, setTeacherList] = useState([]);
 
     const keyword = useRef('');
-    const field = useRef('ID');
+    const field = useRef('TeacherID');
 
     // Display all teachers
     useEffect(() => {
@@ -45,6 +45,9 @@ function Teachers() {
         }
     }
 
+    // Define the order of columns
+    const columns = ['TeacherID', 'TeacherName', 'LevelOfEducation', 'Faculty'];
+
     return (
         <>
             <h3>LIST OF TEACHERS</h3>
@@ -60,8 +63,11 @@ function Teachers() {
 
                     <input type="text" ref={keyword} required onKeyDown={handleSearch}></input>
 
+                    <button className='btn btn-info' onClick={() => exportToExcel(teacherList.map((teacher) => teacher.data()), columns, 'teachers.xlsx')}>Export to Excel</button>
                     <CreateTeacher></CreateTeacher>
                 </div>
+
+                
 
                 <table>
                     <thead>
@@ -78,7 +84,7 @@ function Teachers() {
                     <tbody>
                         {(teacherList.length == 0) ? 
                             <tr>
-                                <td colspan="8" style={{textAlign: "center"}}>No data found</td>
+                                <td colSpan="6" style={{textAlign: "center"}}>No data found</td>
                             </tr> : 
                             teacherList.map((teacher, index) => (
                                 <tr key={teacher.data().TeacherID}>
