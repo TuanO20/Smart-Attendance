@@ -34,7 +34,7 @@ function Sidebar() {
                             </li>
                         </NavLink>
 
-                        <NavLink to="/dashboard/classes">
+                        {/* <NavLink to="/dashboard/classes">
                             <li>
                             <i class="fa-solid fa-school"></i>
                                 <span>Classes</span>
@@ -53,7 +53,7 @@ function Sidebar() {
                                 <i class="fa-solid fa-clipboard-user"></i>
                                 <span>Attendances</span>
                             </li>
-                        </NavLink>
+                        </NavLink> */}
 
                         <NavLink to="/dashboard/recognition">
                             <li>
@@ -71,12 +71,12 @@ function Sidebar() {
                     </ul>
                 </div>
 
-                {/* <div className='sidebar__social'>
+                <div className='sidebar__social'>
                     <h5>Follow us</h5>
                     <a href="https://www.facebook.com/Google"><i class="fa-brands fa-facebook fa-lg"></i></a>
                     <a href='https://www.instagram.com/google/'><i class="fa-brands fa-square-instagram fa-lg"></i></a>
                     <a href='https://twitter.com/Google'><i class="fa-brands fa-square-x-twitter fa-lg"></i></a>
-                </div> */}
+                </div>
             </div>
         </>
     );

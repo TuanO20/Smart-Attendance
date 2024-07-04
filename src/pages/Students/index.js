@@ -6,7 +6,7 @@ import CreateStudent from '../../components/CRUDStudent/CreateStudent';
 import DeleteStudent from '../../components/CRUDStudent/DeleteStudent';
 import UpdateStudent from '../../components/CRUDStudent/UpdateStudent';
 import GetFeatureFile from '../../components/GetFeatureFile';
-
+import { exportToExcel } from '../../utils/excel';
 
 function Students() {
     const [studentList, setStudentList] = useState([]);
@@ -44,7 +44,6 @@ function Students() {
                     where('Year', '==', searchKeyword)
                 );
 
-
                 const data = await getDocs(q);
                 setStudentList(data.docs);
             } 
@@ -53,6 +52,8 @@ function Students() {
         }
     }
 
+    // Define the order of columns
+    const columns = ['ID', 'FullName', 'Faculty', 'TypeOfTraining', 'Class', 'Year'];
 
     return (
         <>
@@ -70,9 +71,12 @@ function Students() {
                     </select>
 
                     <input type="text" ref={keyword} required onKeyDown={handleSearch}></input>
-
+                    <button className='btn btn-info' onClick={() => exportToExcel(studentList.map((student) => student.data()), columns)}>Export to Excel</button>
                     <CreateStudent></CreateStudent>
+
                 </div>
+
+                
 
                 <table>
                     <thead>
