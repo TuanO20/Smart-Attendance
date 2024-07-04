@@ -61,7 +61,7 @@ const CreateTeacher = () => {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Level of education</Form.Label>
+              <Form.Label>Faculty</Form.Label>
               <Form.Select ref={facultyRef}>
                 <option value='Computer Science'>Computer Science</option>
                 <option value='Computer Engineering'>Computer Engineering</option>
@@ -73,7 +73,7 @@ const CreateTeacher = () => {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Faculty</Form.Label>
+              <Form.Label>Level of education</Form.Label>
               <Form.Select ref={LevelOfEducation}>
                 <option value='Bachelor'>Bachelor</option>
                 <option value='Master'>Master</option>

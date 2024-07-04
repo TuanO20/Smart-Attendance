@@ -58,7 +58,6 @@ function Students() {
         <>
             <h3>LIST OF STUDENTS</h3>
             <div className='studentList'>
-                {/* <SearchStudent></SearchStudent> */}
                 <div className="search__item">
                     <label>Search by: </label>
                     <select ref={field}>
@@ -71,7 +70,6 @@ function Students() {
                     </select>
 
                     <input type="text" ref={keyword} required onKeyDown={handleSearch}></input>
-                    {/* <i class="fa-solid fa-magnifying-glass"></i> */}
 
                     <CreateStudent></CreateStudent>
                 </div>
