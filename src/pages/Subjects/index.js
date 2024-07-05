@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import CreateSubject from '../../components/CRUDSubject/CreateSubject';
 import DeleteSubject from '../../components/CRUDSubject/DeleteSubject';
 import UpdateSubject from '../../components/CRUDSubject/UpdateSubject';
+import { exportToExcel } from '../../utils/excel';
 
 function Subjects(){
     const [subjectList, setSubjectList] = useState([]);
@@ -85,6 +86,9 @@ function Subjects(){
         }
     }
 
+    // Define the order of columns
+    const columns = ['SubjectID', 'SubjectName', 'PrevSubjectID', 'PrereqsSubjectID', 'Faculty', 'ClassesID'];
+
     return (
         <>
             <h3>LIST OF SUBJECTS</h3>
@@ -101,9 +105,11 @@ function Subjects(){
                     </select>
 
                     <input type="text" ref={keyword} required onKeyDown={handleSearch}></input>
+                    <button className='btn btn-info' onClick={() => exportToExcel(subjectList.map((subject) => subject.data()), columns, 'subjects.xlsx')}>Export to Excel</button>
 
                     <CreateSubject></CreateSubject>
                 </div>
+
 
                 <table>
                     <thead>

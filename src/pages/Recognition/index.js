@@ -19,39 +19,39 @@ function Recognition() {
         <>
             <h3>Face Recognition</h3>
             <div className='container__box'>
-                <div className="main__item">
-                    <fieldset>
-                        <legend>Recognition screen</legend>
-                        <div className="main__title">
-                            <div className="title--1">
-                                <label>Choose LessonID</label>
-                                <select>
-                                    <option value={1}>Test 1</option>
-                                    <option value={2}>Test 2</option>
-                                </select>
-                            </div>
-
-                            <div className="title--2">
-                                <label>Choose type of attendance</label>
-                                <select>
-                                    <option value="In">In</option>
-                                    <option value="Out">Out</option>
-                                </select>
-                            </div>
+                <fieldset className="main__item">
+                    <legend>Recognition screen</legend>
+                    <div className="main__title">
+                        <div className="title--1">
+                            <label>Choose LessonID</label>
+                            <select>
+                                <option value={1}>IT002.O21_1</option>
+                                <option value={2}>IT002.O22_1</option>
+                                <option value={3}>CE222.O21_1</option>
+                            </select>
                         </div>
 
-                        <div className='main__camera'>
-                            {isCamOpen ? ( <Webcam mirrored={true} ref={webcamRef} style={{ width: "50%" }} />)
-                                    : (<img src='https://t4.ftcdn.net/jpg/01/07/57/91/360_F_107579101_QVlTG43Fwg9Q6ggwF436MPIBTVpaKKtb.jpg' className='mockBox'></img>)
-                            }
+                        <div className="title--2">
+                            <label>Choose type of attendance</label>
+                            <select>
+                                <option value="In">In</option>
+                                <option value="Out">Out</option>
+                            </select>
                         </div>
+                    </div>
 
-                        <div className='main__button'>
-                            <Button className='btn-success' onClick={handleOpenCam}>Open Camera</Button>
-                            <Button className='btn-danger' onClick={handleCloseCam}>Close Camera</Button>
-                        </div>
-                    </fieldset>
-                </div>
+                    <div className='main__camera'>
+                        {isCamOpen ? ( <Webcam mirrored={true} ref={webcamRef} style={{ width: "50%" }} />)
+                                : (<img src='https://t4.ftcdn.net/jpg/01/07/57/91/360_F_107579101_QVlTG43Fwg9Q6ggwF436MPIBTVpaKKtb.jpg' className='mockBox'></img>)
+                        }
+                    </div>
+
+                    <div className='main__button'>
+                        <Button className='btn-success' onClick={handleOpenCam}>Open Camera</Button>
+                        <Button className='btn-danger' onClick={handleCloseCam}>Close Camera</Button>
+                    </div>
+                </fieldset>
+
 
                 <div className='main__info'>
                     <fieldset>

@@ -71,7 +71,7 @@ function Students() {
                     </select>
 
                     <input type="text" ref={keyword} required onKeyDown={handleSearch}></input>
-                    <button className='btn btn-info' onClick={() => exportToExcel(studentList.map((student) => student.data()), columns)}>Export to Excel</button>
+                    <button className='btn btn-info export__excel' onClick={() => exportToExcel(studentList.map((student) => student.data()), columns)}>Export to Excel</button>
                     <CreateStudent></CreateStudent>
 
                 </div>

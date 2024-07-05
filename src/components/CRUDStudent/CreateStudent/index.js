@@ -214,7 +214,7 @@ const CreateStudent = () => {
               <Button className='btn btn-secondary' onClick={handleCaptureImage}>Center</Button>
               <Button className='btn btn-danger' onClick={handleCaptureImage}>Top</Button>
               <Button className='btn btn-info' onClick={handleCaptureImage}>Bottom</Button>
-              <Button className='btn btn-success' onClick={handleOK}>Send</Button>
+              {/* <Button className='btn btn-success' onClick={handleOK}>Send</Button> */}
             </Form.Group>
           </Form>
         </Modal.Body>

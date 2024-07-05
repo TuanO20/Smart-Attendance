@@ -34,14 +34,14 @@ function Sidebar() {
                             </li>
                         </NavLink>
 
-                        {/* <NavLink to="/dashboard/classes">
+                        <NavLink to="/dashboard/classes">
                             <li>
                             <i class="fa-solid fa-school"></i>
                                 <span>Classes</span>
                             </li>
                         </NavLink>
 
-                        <NavLink to="/dashboard/lessons">
+                        {/* <NavLink to="/dashboard/lessons">
                             <li>
                                 <i class="fa-solid fa-chalkboard"></i>
                                 <span>Lessons</span>

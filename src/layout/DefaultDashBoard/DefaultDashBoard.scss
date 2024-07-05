@@ -5,7 +5,8 @@
     .noti {
         padding: 15px;
         background-color: white;
-        height: 90vh;
+        height: 100%;
+        max-height: 500px;
         color: #135D66;
 
         h4 {
