@@ -5,6 +5,7 @@ import { db } from '../../../firebase';
 import Webcam from 'react-webcam';
 import './CreateStudent.scss';
 import { clear } from '@testing-library/user-event/dist/clear';
+import { Create } from '../../../utils/utils';
 
 const CreateStudent = () => {
   const [show, setShow] = useState(false);
@@ -81,6 +82,7 @@ const CreateStudent = () => {
       TypeOfTraining: typeOfTrainingRef.current.value,
       Class: classRef.current.value,
       Year: parseInt(yearRef.current.value),
+      Images: imagesAll
     };
 
     const yearNow = new Date().getFullYear();
@@ -138,9 +140,6 @@ const CreateStudent = () => {
     }, 500);
 }
 
-  const handleOK = () => {
-    console.log(imagesAll);
-  }
 
 
   return (
